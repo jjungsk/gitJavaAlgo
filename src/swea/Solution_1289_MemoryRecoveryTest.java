@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Problem_1289_MemoryRecoveryTest  {
+public class Solution_1289_MemoryRecoveryTest  {
 	
 	public static void main(String[] args) throws IOException {
 		 BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
