@@ -3,9 +3,6 @@ package online.day4_220811_BFS_DFS;
 import java.util.Arrays;
 import java.util.Scanner;
 
-//4
-//1 2 3 4
-// 
 
 public class NextPermutaionTest { // nPn
 	
