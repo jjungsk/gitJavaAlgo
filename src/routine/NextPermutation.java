@@ -50,10 +50,28 @@ public class NextPermutation {
 		// 1. 꼭대기 찾기
 		int i = N-1;
 		// i>0: 첫번째 원소가 안될때 & 뒷 숫자와 바로 앞 숫자 비교
-		while (i > 0 && numbers[i-1] > numbers[i]) --i;/
+		while (i > 0 && numbers[i-1] > numbers[i]) --i;
+		
+		// 12345의 배열이 54321로 완전 끝났을때
+		if (i==0) return false;
+		
+		// 2. 꼭대기의 바로 앞자리 (i-1)의 값을 크게 만들 교환 값 찾기
+		int j = N-1;
+		while (numbers[i-1]>=numbers[j]) j--;
+		swap(numbers, i-1, j);
+		
+		// 3. i 위치부터 맨 뒤까지의 수열을 가장 작은 형태의 오름차순으로 정렬
+		int k = N-1;
+		while (i<k) swap(numbers, i++, k--);
 		
 		return true;
 		
+	}
+	
+	private static void swap(int[] numbers, int i, int j) {
+		int temp = numbers[i];
+		numbers[i] = numbers[j];
+		numbers[j] = temp;
 	}
 	
 	

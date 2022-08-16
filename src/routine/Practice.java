@@ -32,7 +32,7 @@ public class Practice {
 			List<Character> includes = new ArrayList<>();
 			List<Character> excludes = new ArrayList<>();
 			for (int j=0; j < src.length;j++) {
-				if ((i& (1<<j)) > 0)
+				if ((i& (1<<j)) > 0) // ( != 0 )
 					includes.add(src[j]);
 				else
 					excludes.add(src[j]);

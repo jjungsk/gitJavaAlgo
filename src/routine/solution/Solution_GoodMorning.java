@@ -11,10 +11,10 @@ public class Solution_GoodMorning {
         //powerset();
         // 2. src에서 3개를 뽑아서 만들 수 있는 조합을 모두 출력하시오.
         System.out.println("조합");
-        // makeCombination(3,new char[3], 0);
+         makeCombination(3,new char[3], 0);
         // 3. src에서 3개를 뽑아서 만들 수 있는 순열을 모두 출력하시오.
         System.out.println("순열");
-         makePermutation(3, new char[3], new boolean[src.length]);
+//        makePermutation(3, new char[3], new boolean[src.length]);
     }
 
     static void powerset() {
