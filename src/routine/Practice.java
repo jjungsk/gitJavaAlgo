@@ -2,83 +2,55 @@ package routine;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class Practice {
 	
-	private static char[] src = {'A', 'B', 'C', 'D'};
-	private static int total = 0;
-	
 	public static void main(String[] args) {
-
-//		(1)powerset
-		System.out.println("powerset");
-		powerset();
 		
-//		(2) combination
-//		System.out.println("comb");
-//		comb(3, new char[3], 0);
-//		System.out.println(total);
+		Integer[] arr = {3,4,2,1};
 		
-//		(3) permutation
-//		System.out.println("permutation");
-//		perm(3, new char[3], new boolean[src.length]);
-//		System.out.println(total);
-	}
-	
-	
-	private static void powerset() {
-		for (int i=0; i<(1<<src.length);i++) {
-			List<Character> includes = new ArrayList<>();
-			List<Character> excludes = new ArrayList<>();
-			for (int j=0; j < src.length;j++) {
-				if ((i& (1<<j)) > 0) // ( != 0 )
-					includes.add(src[j]);
-				else
-					excludes.add(src[j]);
-			}
-			total++;
-			System.out.println("i : " + includes + " : " + excludes);
+		Arrays.sort(arr, new Comparator<Integer>() {
 			
-		}
-		System.out.println(total);
-				
-		
-	}
-	
-	
-	private static void comb(int cnt, char[] choosed, int startIdx) {
-		if (cnt == 0) {
-			total++;
-			System.out.println(Arrays.toString(choosed));
-			return;
-		}
-		
-		for (int i=startIdx; i<src.length; i++) {
-			choosed[choosed.length-cnt] = src[i];		
-			comb(cnt-1, choosed, i+1);
-		}
-		
-	}
-	
-	
-	private static void perm(int cnt, char[] choosed, boolean[] visited) {
-		
-		if  (cnt == 0) {
-			total++;
-			System.out.println(Arrays.toString(choosed));
-			return;
-		}
-		
-		for (int i =0; i <src.length; i++)
-			if (!visited[i]) {
-				visited[i] = true;
-				choosed[choosed.length-cnt] = src[i];
-				perm(cnt-1, choosed, visited);
-				visited[i] = false;
+			public int compare(Integer o1, Integer o2) {
+				return o1-o2;
 			}
+		});
 		
+		do {
+			System.out.println(Arrays.toString(arr));
+		} while (np(arr));
 		
 	}
+	
+	private static boolean np(Integer[] numbers) {
+		int N = numbers.length;
+		
+		// 1
+		int i = N-1;
+		while (i>0 && numbers[i-1] >= numbers[i]) --i;
+		if (i == 0) return false;
+		
+		// 2
+		int j = N-1;
+		while (numbers[i-1]>= numbers[j]) j--;
+		swap(numbers, i-1, j);
+		
+		// 2
+		int k = N-1;
+		while (i<k) swap(numbers, i++, k--);
+		
+		return true;
+		
+	}
+	
+	private static void swap(Integer[] numbers, int i, int j) {
+		int temp = numbers[i];
+		numbers[i] = numbers[j];
+		numbers[j] = temp;
+		
+	}
+
 
 }

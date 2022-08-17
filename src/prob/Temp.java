@@ -1,28 +1,27 @@
 package prob;
 
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class Temp {
 	
 	
 	public static void main(String[] args) {
-
-		int ans = recursivePower(2, 10);
 		
-		System.out.println(ans);
+		int[] num = {1,2};
+		sample(2, num);
+		
+		System.out.println(num[0]);
+		System.out.println(num[1]);
+
+
+				
+	
 	}
 	
-	private static int recursivePower(int x, int n) {
-		if (n==1)
-			return x;
-		
-		if (n%2 == 0) {
-			int temp = recursivePower(x, n/2);
-			return temp*temp;
-		} else {
-			int temp = recursivePower(x, (n-1)/2);
-			return temp*temp*x;
-		}
+	private static void sample(int number, int[] num) {
+		num[0] += number;
+		num[1] += number;
+		return;
 	}
 	
 }
