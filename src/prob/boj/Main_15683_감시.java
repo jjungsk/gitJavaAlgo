@@ -14,6 +14,7 @@ public class Main_15683_감시 {
 		StringTokenizer st;
 		List<int[]> posCC = new ArrayList<>();
 		
+		// rr
 		st = new StringTokenizer(br.readLine(), " ");
 		int N = Integer.parseInt(st.nextToken()); // row 열
 		int M = Integer.parseInt(st.nextToken()); // col 행
