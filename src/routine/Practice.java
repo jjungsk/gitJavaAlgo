@@ -7,48 +7,31 @@ import java.util.List;
 
 public class Practice {
 	
+	static int[] arr = {1,2,3,4};
+	
 	public static void main(String[] args) {
 		
-		Integer[] arr = {3,4,2,1};
+		powerset();
 		
-		Arrays.sort(arr, new Comparator<Integer>() {
+	}
+	
+	private static void powerset() {
+		
+		for (int i = 0; i < (1<<arr.length); i++) {
+			List<Integer> includes = new ArrayList<>();
+			List<Integer> excludes = new ArrayList<>();
 			
-			public int compare(Integer o1, Integer o2) {
-				return o1-o2;
+			for (int j = 0; j < arr.length; j++) {
+				if ( (i & (1<<j)) > 0) {
+					includes.add(arr[j]);
+				} else {
+					excludes.add(arr[j]);
+				}
 			}
-		});
-		
-		do {
-			System.out.println(Arrays.toString(arr));
-		} while (np(arr));
-		
-	}
-	
-	private static boolean np(Integer[] numbers) {
-		int N = numbers.length;
-		
-		// 1
-		int i = N-1;
-		while (i>0 && numbers[i-1] >= numbers[i]) --i;
-		if (i == 0) return false;
-		
-		// 2
-		int j = N-1;
-		while (numbers[i-1]>= numbers[j]) j--;
-		swap(numbers, i-1, j);
-		
-		// 2
-		int k = N-1;
-		while (i<k) swap(numbers, i++, k--);
-		
-		return true;
-		
-	}
-	
-	private static void swap(Integer[] numbers, int i, int j) {
-		int temp = numbers[i];
-		numbers[i] = numbers[j];
-		numbers[j] = temp;
+			
+			System.out.println(includes + " : " + excludes);
+			
+		}
 		
 	}
 

@@ -1,27 +1,30 @@
 package prob;
 
-import java.util.Arrays;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class Temp {
 	
 	
 	public static void main(String[] args) {
 		
-		int[] num = {1,2};
-		sample(2, num);
+		Deque<Integer> dq = new ArrayDeque<Integer>();
 		
-		System.out.println(num[0]);
-		System.out.println(num[1]);
+		dq.offer(1);
+		dq.offer(2);
+		dq.offer(3);
+		dq.offer(4);
+		
+		System.out.println(dq);
+		
+		int temp1 = dq.poll();
+		System.out.println(temp1);
+		System.out.println(dq);
 
 
 				
 	
 	}
-	
-	private static void sample(int number, int[] num) {
-		num[0] += number;
-		num[1] += number;
-		return;
-	}
+
 	
 }
