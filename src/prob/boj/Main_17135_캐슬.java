@@ -59,7 +59,7 @@ public class Main_17135_캐슬 {
 //			System.out.println("=============");
 //		}
 		
-//		int[] temp = {1,2,3};
+//		int[] temp = {2,5,8};
 //		int kill = killEnemy(0, temp);
 		
 //		System.out.println("ans");
@@ -97,7 +97,7 @@ public class Main_17135_캐슬 {
 					for (int j = archerPos[archer]-ca; j <= archerPos[archer]+ca; j++) {
 						// N-ca-1 = 0
 						for (int i = N-1; i >= 0; i--) {
-							if (0 <= archerPos[archer]-ca && archerPos[archer]+ca <= M-1 
+							if (0 <= j && j <= M-1 
 									&& (Math.abs(i-N) + Math.abs(j-archerPos[archer])) <= ca+1 && map[i][j] == 1) {
 //								map[i][j] = 0;
 								for (int p = 0; p < 3; p++) {
