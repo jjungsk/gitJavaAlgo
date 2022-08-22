@@ -55,24 +55,34 @@ public class Main_15683_감시 {
 		
 		
 		// 5>4>3>2>1 순으로 카메라 sort (생략 가능한지 확인 필요)
-//		Collections.sort(posCC, new Comparator<int[]>() {
-//			@Override
-//			public int compare(int[] o1, int[] o2) {
-//				return o1[0]-o2[0];
-//			}
-//		});
+		Collections.sort(posCC, new Comparator<int[]>() {
+			@Override
+			public int compare(int[] o1, int[] o2) {
+				return o2[0]-o1[0];
+			}
+		});
 		
-		for (int[] a: posCC) {
-			System.out.println(Arrays.toString(a));
-			setMap(a);
+		
+		for (int[] a: posCC) setMap(a);
+		
+		int ans = 0;
+		for (int i = 1; i <= N; i++) {
+			for (int j = 1; j <= M; j++)
+				if (map[i][j] == 0) ans++;						
 		}
 		
+		System.out.println(ans);
+		
 		// 출력
-		for (int[] a: map)
+		for (int i = 1; i <= N; i++) {
+			for (int j = 1; j <= M; j++) {
+				System.out.print(map[i][j] + " ");						
+			}
+			System.out.println();
+		}
+		
+		for (int[] a: posCC)
 			System.out.println(Arrays.toString(a));
-//		
-//		for (int[] a: posCC)
-//			System.out.println(Arrays.toString(a));
 		
 		
 	}
@@ -104,6 +114,7 @@ public class Main_15683_감시 {
 		switch(n) {
 		case 1:
 			dirIdx = 0;
+			maxD = cntD[0];
 			for (int i=1; i<4; i++) {
 				if (cntD[i]>maxD)
 					dirIdx = i;
@@ -133,6 +144,10 @@ public class Main_15683_감시 {
 				if (map[row][col] == 0)
 					map[row][col] = 8;
 			}
+			
+			row = position[1];
+			col = position[2];
+			
 			while (map[row][col] != 6) {
 				row += dir[dir22][0];
 				col += dir[dir22][1];
@@ -163,6 +178,8 @@ public class Main_15683_감시 {
 				if (map[row][col] == 0)
 					map[row][col] = 8;
 			}
+			row = position[1];
+			col = position[2];
 			while (map[row][col] != 6) {
 				row += dir[dir32][0];
 				col += dir[dir32][1];
@@ -200,12 +217,16 @@ public class Main_15683_감시 {
 				if (map[row][col] == 0)
 					map[row][col] = 8;
 			}
+			row = position[1];
+			col = position[2];
 			while (map[row][col] != 6) {
 				row += dir[dir42][0];
 				col += dir[dir42][1];
 				if (map[row][col] == 0)
 					map[row][col] = 8;
 			}
+			row = position[1];
+			col = position[2];
 			while (map[row][col] != 6) {
 				row += dir[dir43][0];
 				col += dir[dir43][1];

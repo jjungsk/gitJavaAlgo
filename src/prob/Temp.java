@@ -22,6 +22,8 @@ public class Temp {
 		num[0] += number;
 		num[1] += number;
 		return;
+		
 	}
 	
 }
+

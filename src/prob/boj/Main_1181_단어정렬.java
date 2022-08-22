@@ -1,4 +1,4 @@
-package prob.solvedAC;
+package prob.boj;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
