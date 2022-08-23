@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * @author THKim
  */
-public class AdjMatrixTest {
+public class BFS_DFS {
 
 	static int[][] adjMatrix;
 	static int N;
