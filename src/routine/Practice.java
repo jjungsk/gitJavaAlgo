@@ -1,53 +1,61 @@
 package routine;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Practice {
 	
-	static int[] arr = {1,2,3,4};
-	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		int N = Integer.parseInt(br.readLine());
 		
-<<<<<<< HEAD
-		List<Integer>[] list;
-		list = new ArrayList[10];
-		
-		for (int i = 0; i < 10; i++) {
-			list[i] = new ArrayList<Integer>();
+		int[][] adjMatrix = new int[N][N];
+		for (int i = 0; i < N; i++) {
+			st = new StringTokenizer(br.readLine(), " ");
+			for (int j = 0; j < N; j++) {
+				adjMatrix[i][j] = Integer.parseInt(st.nextToken());
+			}
 		}
 		
-		list[0].add(1);
-		list[0].add(3);
-		list[0].add(11);
+		int start = 0;
+		int end = N - 1;
 		
-		System.out.println(list[0]);
-=======
-		powerset();
+		int[] D = new int[N];
+		Arrays.fill(D, Integer.MAX_VALUE);
+		boolean[] visited = new boolean[N];
 		
-	}
-	
-	private static void powerset() {
+		// Initialize
+		D[start] = 0;
+		int min, minVertex;
 		
-		for (int i = 0; i < (1<<arr.length); i++) {
-			List<Integer> includes = new ArrayList<>();
-			List<Integer> excludes = new ArrayList<>();
-			
-			for (int j = 0; j < arr.length; j++) {
-				if ( (i & (1<<j)) > 0) {
-					includes.add(arr[j]);
-				} else {
-					excludes.add(arr[j]);
+		// 구현부
+		for (int c = 0; c < N; c++) {
+			// step1. 가장 작은 min값과 minVertex 찾기
+			min = Integer.MAX_VALUE;
+			minVertex = -1;
+			for (int i = 0; i < N; i++) {
+				if (!visited[i] && min > D[i]) {
+					min = D[i];
+					minVertex = i;
 				}
 			}
 			
-			System.out.println(includes + " : " + excludes);
+			// step2. 방문처리
+			visited[minVertex] = true;
 			
+			// stemp3. 최소값 D 갱신
+			for (int i = 0; i < N; i++) {
+				if (!visited[i] && adjMatrix[minVertex][i] > 0 && D[i] > D[minVertex] + adjMatrix[minVertex][i]) {
+					D[i] = D[minVertex] + adjMatrix[minVertex][i];
+				}
+			}
 		}
->>>>>>> 09372973d3984ff666fa6092ffea2df0b29cf6f7
 		
+		System.out.println(D[end]);
 	}
-
-
-
+	
 }
