@@ -5,9 +5,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main_1753_최단경로_PriorityQueue {
+	
+	static class Node implements Comparable<Node> {
+		int vertex, weight;
+		public Node(int vertex, int weight) {
+			super();
+			this.vertex = vertex;
+			this.weight = weight;
+		}
+		
+		@Override
+		public int compareTo(Node o) {
+			return this.weight - o.weight;
+		}
+		
+	}
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -46,10 +62,12 @@ public class Main_1753_최단경로_PriorityQueue {
 		visited = new boolean[V];
 		D[start-1] = 0; // index 0이 시작점이므로 start - 1로 초기화
 		
+		pq.offer(new Node(start-1, 0));
+		
 		dijkstra();
 		
 		for (int i = 0; i < V; i++) {
-			if (visited[i]) sb.append(D[i]).append("\n");
+			if (D[i] != Integer.MAX_VALUE) sb.append(D[i]).append("\n");
 			else sb.append("INF").append("\n");
 			
 		}
@@ -63,28 +81,25 @@ public class Main_1753_최단경로_PriorityQueue {
 	static int[] D;
 	static ArrayList<int[]>[] adjList;
 	static boolean[] visited;
+	static PriorityQueue<Node> pq = new PriorityQueue<Node>();
 
 	static void dijkstra() {
 		
-		for (int c = 0; c < V; c++) {
-			min = Integer.MAX_VALUE;
-			minVertex = -1;
-			boolean flag = false;
+		while (!pq.isEmpty()) {
+			Node node = pq.poll();
+			min = node.weight;
+			minVertex = node.vertex;
 			
-			for (int i = 0; i < V; i++) {
-				if (!visited[i] && min > D[i]) {
-					min = D[i];
-					minVertex = i;
-					flag = true;
-				}
-			}
+//			if (visited[minVertex]) continue;
+//			visited[minVertex] = true;
+			if (D[minVertex] < min) continue;
 			
-			if (!flag) break;
-			visited[minVertex] = true;
 			
 			for (int[] cur: adjList[minVertex]) {
-				if (!visited[cur[0]] && D[cur[0]] > D[minVertex] + cur[1]) {
+//				if (!visited[cur[0]] && D[cur[0]] > D[minVertex] + cur[1]) {
+				if (D[cur[0]] > D[minVertex] + cur[1]) {
 					D[cur[0]] = D[minVertex] + cur[1];
+					pq.offer(new Node(cur[0], D[cur[0]]));
 				}
 			}
 			

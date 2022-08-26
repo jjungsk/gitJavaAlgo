@@ -1,3 +1,5 @@
+package online.day5_220818_그래프;
+
 import java.util.Scanner;
 
 /**
