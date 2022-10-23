@@ -1,4 +1,4 @@
-package prob.self;
+package prob.self.solved;
 
 import java.util.Arrays;
 import java.util.Scanner;

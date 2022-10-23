@@ -1,4 +1,4 @@
-package prob.self;
+package prob.self.solved;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
