@@ -7,7 +7,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.StringTokenizer;
 
-public class Main_12100_2048_골드2 {
+public class Algorithm29_12100_2048 {
 	
 	static int N, ans, rot;
 	static int[][] map, copy;
