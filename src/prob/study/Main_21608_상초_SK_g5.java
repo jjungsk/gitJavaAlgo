@@ -13,7 +13,7 @@ import java.util.Deque;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class Main_21608_상초_SK_g4 {
+public class Main_21608_상초_SK_g5 {
 	
 	static int N;
 	static int[] dr = {-1, 0, 0, 1}; // 북 서 동 남

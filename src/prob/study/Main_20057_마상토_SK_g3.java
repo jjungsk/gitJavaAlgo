@@ -11,6 +11,8 @@ import java.util.StringTokenizer;
 public class Main_20057_마상토_SK_g3 {
 	
 	static int N;
+	static int[] dr = {0, 1, 0, -1}; // 서 남 동 북
+	static int[] dc = {-1, 0, 1, 0};
 	static int[] windR = {-2, -1, -1, -1, 0, 0, 1, 1, 1, 2};
 	static int[] windC = {0, -1, 0, 1, -2, -1, -1, 0, 1, 0};
 	static int[] percent = {2, 10, 7, 1, 5, 55, 10, 7, 1, 2};
@@ -35,13 +37,27 @@ public class Main_20057_마상토_SK_g3 {
 		
 		int cnt = 0; // 이동 cnt
 		int tot = N*N; // 총 이동해야 할 total cnt = N*N번
-		while (cnt != tot) {
+		int ran = 0, k = 0;
+		loop:
+		while (true) {
 			int[] cur = dq.poll();
 			
+			for (int i = 0; i < 4; i++) {
+				++ran;
+				
+				k = (ran%2==1)? ran+1: ran;
+				for (int ro = 0; ro < k; ro++) {
+					++cnt;
+					int nextR = cur[0]+dr[i];
+					int nextC = cur[1]+dc[i];
+					map[nextR][nextC] = cnt;
+					if (tot==cnt) break loop;
+				}
+			}
 			
 		}
 				
-		rotat();
+//		rotat();
 		
 		for (int i = 1; i <= N; i++) {
 			for (int j = 1; j <= N; j++) {
